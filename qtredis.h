@@ -6,7 +6,7 @@
 #include <QEventLoop>
 
 #include "reader.h"
-
+//test update submodule
 class QtRedis : public QObject
 {
     Q_OBJECT
