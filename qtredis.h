@@ -120,6 +120,7 @@ public:
     QStringList sort(QString key, QString conditions);
     int ttl(QString key);
     QString type(QString key);
+    QStringList zrange(QString key, int max, int min, QString other="");
 
 signals:
     void connected();
