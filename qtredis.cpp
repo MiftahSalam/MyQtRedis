@@ -1256,15 +1256,15 @@ QString QtRedis::type(QString key)
     return reply.value.toString();
 }
 
-QStringList QtRedis::zrange(QString key, int max, int min, QString other)
+QStringList QtRedis::zrange(QString key, double max, double min, QString other)
 {
     QString cmd("ZRANGE ");
     cmd.append(key);
 
     cmd.append(" ");
-    cmd.append(QString::number(max));
+    cmd.append(QString::number(max,'f',1));
     cmd.append(" ");
-    cmd.append(QString::number(min));
+    cmd.append(QString::number(min,'f',1));
     cmd.append(" ");
     cmd.append(other);
 
