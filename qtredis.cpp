@@ -1256,15 +1256,32 @@ QString QtRedis::type(QString key)
     return reply.value.toString();
 }
 
-QStringList QtRedis::zrange(QString key, double max, double min, QString other)
+QStringList QtRedis::zrange(QString key, int max, int min, QString other)
 {
     QString cmd("ZRANGE ");
     cmd.append(key);
 
     cmd.append(" ");
-    cmd.append(QString::number(max,'f',1));
+    cmd.append(QString::number(max));
     cmd.append(" ");
-    cmd.append(QString::number(min,'f',1));
+    cmd.append(QString::number(min));
+    cmd.append(" ");
+    cmd.append(other);
+
+    Reply reply = command(cmd);
+
+    return reply.value.toStringList();
+}
+
+QStringList QtRedis::zrangebyscore(QString key, double max, double min, QString other)
+{
+    QString cmd("ZRANGEBYSCORE ");
+    cmd.append(key);
+
+    cmd.append(" ");
+    cmd.append(QString::number(max,'f'));
+    cmd.append(" ");
+    cmd.append(QString::number(min,'f'));
     cmd.append(" ");
     cmd.append(other);
 
